@@ -15,7 +15,7 @@ AngularJS Directive for [Google Analytics Embed API](https://developers.google.c
 * or
 * download src/ng-analytics[.min].js
 * or
-* download last [release](https://github.com/flyacts/ngAnalytics/archive/v1.0.0.zip)
+* download latest [release](https://github.com/flyacts/ngAnalytics/archive/v1.0.0.zip)
 
 ## Usage
 * include ng-analytics[.min].js in your index.html before your module definition
