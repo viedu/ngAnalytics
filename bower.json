@@ -1,6 +1,6 @@
 {
-  "name": "ngQuill",
-  "version": "1.0.2",
+  "name": "ngAnalytics",
+  "version": "1.0.0",
   "main": ["src/ng-analytics.js", "src/ng-analytics.min.js"],
   "ignore": [
     "bower_components",
