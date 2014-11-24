@@ -156,7 +156,8 @@
             return {
                 scope: {
                     queries: '=',
-                    authContainer: '@'
+                    authContainer: '@',
+                    viewSelectorContainer: '@'
                 },
                 restrict: 'E',
                 link: function ($scope, element) {
@@ -194,24 +195,49 @@
                             if (!ngAnalyticsService.ga.auth.isAuthorized() && first) {
                                 ngAnalyticsService.authorize($scope.authContainer || 'embed-api-auth-container');
                             }
-
-                            ngAnalyticsService.ga.auth.once('success', function () {
-                                // Send report request.
-                                /**
-                                * Create report
-                                */
-                                var tasks = [];
-                                angular.forEach($scope.queries, function (query) {
-                                    tasks.push(getReport(query));
+                            // without viewSelector connection
+                            if (!$scope.viewSelectorContainer) {
+                                ngAnalyticsService.ga.auth.once('success', function () {
+                                    // Send report request.
+                                    /**
+                                    * Create report
+                                    */
+                                    var tasks = [];
+                                    angular.forEach($scope.queries, function (query) {
+                                        tasks.push(getReport(query));
+                                    });
+                                    $q.all(tasks).then(function (response) {
+                                        $scope.report = response;
+                                        $rootScope.$broadcast('$gaReportSuccess', response, element);
+                                    }, function (response) {
+                                        $scope.error = response;
+                                        $rootScope.$broadcast('$gaReportError', response, element);
+                                    });
                                 });
-                                $q.all(tasks).then(function (response) {
-                                    $scope.report = response;
-                                    $rootScope.$broadcast('$gaReportSuccess', response, element);
-                                }, function (response) {
-                                    $scope.error = response;
-                                    $rootScope.$broadcast('$gaReportError', response, element);
+                            } else { // with viewSelector connection
+                                var viewWatcher = $scope.$watch(function () {
+                                    return ngAnalyticsService.viewSelectors[$scope.viewSelectorContainer];
+                                }, function (viewSelector) {
+                                    if (viewSelector) {
+                                        ngAnalyticsService.viewSelectors[$scope.viewSelectorContainer].on('change', function (ids) {
+                                            var tasks = [];
+                                            angular.forEach($scope.queries, function (query) {
+                                                query.query.ids = ids;
+                                                tasks.push(getReport(query));
+                                            });
+                                            $q.all(tasks).then(function (response) {
+                                                $scope.report = response;
+                                                $rootScope.$broadcast('$gaReportSuccess', response, element);
+                                            }, function (response) {
+                                                $scope.error = response;
+                                                $rootScope.$broadcast('$gaReportError', response, element);
+                                            });
+                                        });
+                                        // clear watcher
+                                        viewWatcher();
+                                    }
                                 });
-                            });
+                            }
 
                             // clear watcher;
                             watcher();

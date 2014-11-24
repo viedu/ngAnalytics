@@ -99,11 +99,11 @@ Sends single or multiple report-queries and get informed about the repsonse.
 
 #### Usage
 >
-    <ng-analytics-report queries="queries" auth-container="embed-api-auth-container"></ng-analytics-report>
+    <ng-analytics-report queries="queries" auth-container="embed-api-auth-container" view-selector-container="view-selector-container"></ng-analytics-report>
 
 #### Attributes
 * __queries__ _(required)_ - array of report-query object (scope variable) (query.
-ids is required for each report-query, e.g.
+ids is required for each report-query if not connected with viewSelector, e.g.
 
 > 
     [{
@@ -114,6 +114,7 @@ ids is required for each report-query, e.g.
         }
     }];
 
+* __view-selector-container__ _(optional)_ - string of id for connected viewSelector
 * __auth-container__ _(optional, default: 'embed-api-auth-container')_ - string of the id of the auth-container - required to connect report with the authorization
 
 #### Events
