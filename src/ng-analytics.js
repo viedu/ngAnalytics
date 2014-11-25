@@ -2,7 +2,7 @@
 (function () {
 
     var app;
-    // declare ngQuill module
+    // declare ngAnalytics module
     app = angular.module("ngAnalytics", []);
 
     // service to hold viewSelectors, getter, setters, helper
