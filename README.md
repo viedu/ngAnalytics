@@ -31,7 +31,7 @@ AngularJS Directive for [Google Analytics Embed API](https://developers.google.c
 > 
     // inject ngAnalyticsService
     myAppModule.run(['ngAnalyticsService', function (ngAnalyticsService) {
-        ngGAService.setClientId('YOUR_CLIENTID'); // e.g. xxxxxxxxxx-xxxxxxxxxxxxxxxxxxxxx.apps.googleusercontent.com
+        ngAnalyticsService.setClientId('YOUR_CLIENTID'); // e.g. xxxxxxxxxx-xxxxxxxxxxxxxxxxxxxxx.apps.googleusercontent.com
     }]);
 
 * add ng-analytics directives to your DOM 
