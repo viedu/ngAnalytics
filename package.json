@@ -1,6 +1,6 @@
 {
   "name": "ngAnalytics",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Angular directive for Google Analytics Embed API",
   "author": "Bnegt Weiße <bengtler@gmail.com>",
   "homepage": "https://github.com/KillerCodeMonkey/ngAnalytics",
