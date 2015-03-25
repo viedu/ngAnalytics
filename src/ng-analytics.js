@@ -296,7 +296,7 @@
                             */
                             $scope.viewSelectorContainer = $scope.viewSelectorContainer || 'view-selector-container';
 
-                            var viewSelector = new ngAnalyticsService.ga.ViewSelector({
+                            var viewSelector = new ngAnalyticsService.ga.ext.ViewSelector2({
                                 container: $scope.viewSelectorContainer
                             });
 
