@@ -2,7 +2,9 @@
   "name": "ngAnalytics",
   "version": "1.0.4",
   "main": [
-    "src/ng-analytics.min.js"
+    "src/ng-analytics.min.js",
+    "src/view-selector2.js",
+    "src/view-selector2.css"
   ],
   "ignore": [
     "bower_components",
@@ -12,7 +14,6 @@
     "Gruntfile.js"
   ],
   "dependencies": {
-    "angular": "~1.3.3",
-    "view-selector2": "https://raw.githubusercontent.com/googleanalytics/ga-dev-tools/master/assets/javascript/embed-api/view-selector2.js"
+    "angular": "~1.3.3"
   }
 }
