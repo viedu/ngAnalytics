@@ -1,6 +1,6 @@
 {
   "name": "ngAnalytics",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "main": [
     "src/ng-analytics.min.js",
     "src/view-selector2.js",
